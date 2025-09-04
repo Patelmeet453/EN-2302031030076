@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Headphones",
+    "price": 1200,
+    "description": "High-quality wireless headphones with noise cancellation.",
+    "image": "https://via.placeholder.com/200",
+    "rating": 4.5,
+    "category": "Electronics"
+  },
+  {
+    "id": 2,
+    "name": "Smart Watch",
+    "price": 3000,
+    "description": "Smart watch with fitness tracking and notifications.",
+    "image": "https://via.placeholder.com/200",
+    "rating": 4.2,
+    "category": "Electronics"
+  },
+  {
+    "id": 3,
+    "name": "Gaming Mouse",
+    "price": 1000,
+    "description": "Ergonomic gaming mouse with customizable buttons.",
+    "image": "https://via.placeholder.com/200",
+    "rating": 4.7,
+    "category": "Accessories"
+  },
+  {
+    "id": 4,
+    "name": "Running Shoes",
+    "price": 79.99,
+    "description": "Comfortable running shoes for all-day wear.",
+    "image": "https://via.placeholder.com/200",
+    "rating": 4.3,
+    "category": "Fashion"
+  }
+]
