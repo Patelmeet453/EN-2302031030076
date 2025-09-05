@@ -18,6 +18,7 @@ import MyOrders from "./pages/OrderHistory";
 import AdminOrders from "./admin/Orders";
 import AdminDashboard from "./admin/AdminDashboard";
 import AdminCustomerDashboard from "./admin/AdminCustomerDashboard";
+import NotFound from "./componentes/NotFound";
 
 const App = () => {
   return (
@@ -25,12 +26,14 @@ const App = () => {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/*" element={<NotFound />} />
           <Route path="/products" element={<Products />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          
 
           {/* Protected Routes */}
           <Route

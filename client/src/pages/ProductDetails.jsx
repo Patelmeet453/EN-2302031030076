@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getProductById, addToCart } from "../api";
 import { toast } from "react-toastify";
+import { Star } from "lucide-react";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -54,7 +55,6 @@ const ProductDetails = () => {
       </div>
     );
   }
-  
 
   const shortDesc =
     product.description.length > 300
@@ -92,9 +92,24 @@ const ProductDetails = () => {
               <p className="text-3xl font-bold text-gray-900">
                 ₹{product.price.toLocaleString()}
               </p>
-              <p className="text-yellow-500 font-semibold flex items-center gap-1 text-lg md:text-xl">
-                ⭐ {product.rating || 0} / 5
-              </p>
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, index) => (
+                  <Star
+                    key={index}
+                    fill={
+                      index < (product.rating || 0) ? "currentColor" : "none"
+                    }
+                    className={`w-6 h-6 ${
+                      index < (product.rating || 0)
+                        ? "text-yellow-500"
+                        : "text-gray-300"
+                    }`}
+                  />
+                ))}
+                <span className="ml-2 text-lg md:text-xl font-semibold text-gray-800">
+                  {product.rating || 0} / 5
+                </span>
+              </div>
             </div>
           </div>
 
