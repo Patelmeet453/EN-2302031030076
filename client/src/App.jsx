@@ -19,6 +19,7 @@ import AdminOrders from "./admin/Orders";
 import AdminDashboard from "./admin/AdminDashboard";
 import AdminCustomerDashboard from "./admin/AdminCustomerDashboard";
 import NotFound from "./componentes/NotFound";
+import AdminLogin from "./pages/AdminLogin";
 
 const App = () => {
   return (
@@ -80,6 +81,7 @@ const App = () => {
           /> */}
 
           {/* Admin Routes (Optional - Add admin check later) */}
+            <Route path="/admin-login" element={<AdminLogin />} />
            <Route
             path="/admin-dashboard"
             element={

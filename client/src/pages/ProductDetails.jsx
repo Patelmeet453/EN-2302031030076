@@ -77,7 +77,7 @@ const ProductDetails = () => {
             <h1 className="text-2xl md:text-3xl font-extrabold mb-4 text-gray-900">
               {product.name}
             </h1>
-            <p className="text-gray-700 text-lg md:text-xl mb-6 leading-relaxed">
+            {/* <p className="text-gray-700 text-lg md:text-xl mb-6 leading-relaxed">
               {showFullDesc ? product.description : shortDesc}
               {product.description.length > 300 && (
                 <span
@@ -87,7 +87,26 @@ const ProductDetails = () => {
                   {showFullDesc ? "Show Less" : "Show More"}
                 </span>
               )}
+            </p> */}
+            <p className="text-gray-700 text-lg md:text-xl mb-6 leading-relaxed">
+              {showFullDesc
+                ? product.description.split("\n").map((line, index) => (
+                    <p key={index} className="mb-3">
+                      {line}
+                    </p>
+                  ))
+                : shortDesc}
+
+              {product.description.length > 300 && (
+                <span
+                  onClick={() => setShowFullDesc(!showFullDesc)}
+                  className="text-blue-600 cursor-pointer ml-2 font-medium hover:underline"
+                >
+                  {showFullDesc ? "Show Less" : "Show More"}
+                </span>
+              )}
             </p>
+
             <div className="flex items-center gap-6 mb-6">
               <p className="text-3xl font-bold text-gray-900">
                 ₹{product.price.toLocaleString()}

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Product = require("../models/Product").default; // ✅ Use .default
+const Product = require("../models/Product"); // ✅ Use .default
 // Add a product
 router.post("/", async (req, res) => {
   try {
