@@ -60,22 +60,48 @@
     //   }
     // };
 
-    const handleQuantityChange = async (productId, quantity) => {
-    if (quantity < 1) return;
+  //   const handleQuantityChange = async (productId, quantity) => {
+  //   if (quantity < 1) return;
 
-    // Update cart locally first (instant feedback)
-    const updatedCart = cart.map((item) =>
-      item.product._id === productId ? { ...item, quantity } : item
-    );
-    setCart(updatedCart);
+  //   // Update cart locally first (instant feedback)
+  //   const updatedCart = cart.map((item) =>
+  //     item.product._id === productId ? { ...item, quantity } : item
+  //   );
+  //   setCart(updatedCart);
 
-    // Sync with API
-    try {
-      await updateCartQuantity(productId, quantity);
-    } catch {
-      toast.error("Failed to update quantity");
-    }
+  //   // Sync with API
+  //   try {
+  //     await updateCartQuantity(productId, quantity);
+  //   } catch {
+  //     toast.error("Failed to update quantity");
+  //   }
+  // }
+
+  const handleQuantityChange = async (productId, quantity) => {
+  if (quantity < 1) return;
+
+  const productInCart = cart.find((item) => item.product._id === productId);
+
+  // ✅ Check stock before updating
+  if (quantity > (productInCart?.product?.quantity || 1)) {
+    toast.error("🚫 Not enough stock available");
+    return;
   }
+
+  // Update cart locally first (instant feedback)
+  const updatedCart = cart.map((item) =>
+    item.product._id === productId ? { ...item, quantity } : item
+  );
+  setCart(updatedCart);
+
+  // Sync with API
+  try {
+    await updateCartQuantity(productId, quantity);
+  } catch {
+    toast.error("Failed to update quantity");
+  }
+};
+
 
     const totalPrice = (cart || []).reduce((acc, item) => {
       const price = item?.product?.price || 0;
