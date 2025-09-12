@@ -17,7 +17,7 @@ const Login = () => {
       const res = await loginUser(form);
 
       // Save token and user data
-      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("userToken", res.data.token);
       localStorage.setItem("userData", JSON.stringify(res.data)); // store whole response
 
       toast.success("Login Successful!");

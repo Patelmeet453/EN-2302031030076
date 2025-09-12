@@ -23,7 +23,7 @@ const Profile = () => {
   // Fetch user data
   useEffect(() => {
     const fetchUser = async () => {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("userToken");
       if (!token) {
         toast.error("Please login first!");
         navigate("/login");
